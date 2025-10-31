@@ -62,3 +62,8 @@ for row in rows:
 ```
 
 The resulting `records` list can then be aggregated to replicate the summary tables and daily return figures.
+
+## Efficient frontier 웹 대시보드
+
+- `python tools/generate_frontier_data.py`를 실행해 `site/frontier-data.json`을 생성합니다.
+- `site/index.html`을 브라우저에서 열면 Plotly 기반 효율적 경계 시각화를 확인할 수 있습니다.

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>삼성·애플·엔비디아 효율적 경계 대시보드</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>효율적 경계 분석</h1>
+        <p>
+          2023년 10월부터 2025년 10월까지의 일간 종가를 기반으로 삼성전자, 애플, 엔비디아 조합의 위험-수익 프로파일을 시각화했습니다.
+        </p>
+      </div>
+    </header>
+    <main class="container">
+      <section class="summary">
+        <h2>데이터 개요</h2>
+        <div class="metric-grid">
+          <article class="metric">
+            <h3>자산</h3>
+            <p class="metric-value" data-tickers>—</p>
+            <p class="metric-desc">포트폴리오를 구성한 종목 수</p>
+          </article>
+          <article class="metric">
+            <h3>사용한 일일 수익률</h3>
+            <p class="metric-value" data-observations>—</p>
+            <p class="metric-desc">모든 종목이 동시에 거래된 일수</p>
+          </article>
+          <article class="metric">
+            <h3>원본 거래일</h3>
+            <p class="metric-value" data-raw-rows>—</p>
+            <p class="metric-desc">결측 포함 원시 CSV 행</p>
+          </article>
+        </div>
+        <p class="summary-note">
+          각 일자별 종가가 모두 존재하는 구간에서 수익률을 계산하여 공분산 행렬과 기대 수익률을 도출했습니다.
+        </p>
+      </section>
+      <section class="stats">
+        <h2>단일 자산 성과 요약</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">티커</th>
+                <th scope="col">기대 수익률 (일간)</th>
+                <th scope="col">위험 (표준편차)</th>
+              </tr>
+            </thead>
+            <tbody data-asset-table>
+              <tr>
+                <td colspan="3" class="table-placeholder">데이터를 불러오는 중…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="chart">
+        <h2>효율적 경계</h2>
+        <p>
+          회색 점은 가능한 모든 자산 비중 조합을 나타내며, 진한 보라색 선이 최적 조합(효율적 경계)을 의미합니다. 점을 클릭하면 구성 비중을 확인할 수 있습니다.
+        </p>
+        <div id="frontier-chart" class="chart-area" aria-label="Efficient frontier chart"></div>
+        <aside class="detail-card" data-selection>
+          <h3>포트폴리오 세부 정보</h3>
+          <p>그래프의 점을 클릭하면 해당 조합의 비중과 지표가 표시됩니다.</p>
+        </aside>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>데이터 출처: <code>temp.csv</code>. 계산 스크립트는 <code>tools/generate_frontier_data.py</code>에서 확인할 수 있습니다.</p>
+      </div>
+    </footer>
+  </body>
+</html>
